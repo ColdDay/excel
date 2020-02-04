@@ -1,0 +1,26 @@
+{
+  "name": "excel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "excel.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ColdDay/excel.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ColdDay/excel/issues"
+  },
+  "homepage": "https://github.com/ColdDay/excel#readme",
+  "dependencies": {
+    "koa": "^2.11.0",
+    "koa-body": "^4.1.1",
+    "koa-router": "^8.0.6",
+    "koa-static": "^5.0.0",
+    "node-xlsx": "^0.15.0"
+  }
+}
