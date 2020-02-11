@@ -1,4 +1,4 @@
-const fs = require("fs");
+// const fs = require("fs");
 const path = require('path');
 const xlsx = require('node-xlsx')
 const koaBody = require('koa-body')
@@ -10,7 +10,7 @@ const router = require('koa-router')()
 const app = new Koa();
 
 //设置根目录
-var root = './data';
+// var root = './data';
 var dataArr = [];
 
 app.use(koaBody({
@@ -35,6 +35,7 @@ router.post('/upload', async (ctx, next) => {
 
     ctx.set("Content-Disposition", "attachment; filename=" + "o2olog.xlsx")
             
+    dataArr = [];
     ctx.body = buff;
     
 })
@@ -44,15 +45,12 @@ app.use(static( path.join(__dirname, 'www') ));
 app.listen(3000);
 
 
-//将数组转换成字符串后写入data.txt文件中保存
 
 function parseExcel(filepath,filename) {
     //读取文件内容
     const obj = xlsx.parse(filepath);
     const excelObj=obj[0].data;
-
     //处理数据
-    const data = [];
     for(let i=0;i< excelObj.length; i++){
         let row = excelObj[i];
         row.unshift(filename)
@@ -62,7 +60,6 @@ function parseExcel(filepath,filename) {
 }
 
 function writeExcel(data) {
-
     const buffer = xlsx.build([
         {
             name:'sheet1',
@@ -70,7 +67,7 @@ function writeExcel(data) {
         }
     ]);
     // return buffer
-    var d = new Date().getTime();
-    fs.writeFileSync('./data/'+d+'.xlsx',buffer,{'flag':'w'});
+    // var d = new Date().getTime();
+    // fs.writeFileSync('./data/'+d+'.xlsx',buffer,{'flag':'w'});
     return buffer
 }
